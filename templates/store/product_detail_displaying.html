@@ -1,0 +1,168 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %}
+    <link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{%  static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src=" {% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+{% endblock %}
+
+{% block title %}
+Buy | {{ product.product_name }}
+{% endblock %}
+{% block content %}
+<section class="section-content padding-y bg">
+<div class="container">
+	<div class="card">
+		<div class="row no-gutters">
+			<aside class="col-sm-6 border-right">
+	<article class="gallery-wrap">
+		<div class="img-big-wrap">
+		   <a href="#"><img src="{{ product.product_card_image.url }}"></a>
+		</div> <!-- img-big-wrap.// -->
+		<div class="thumbs-wrap">
+		  <a href="#" class="item-thumb"> <img src="../images/items/9.jpg"></a>
+		  <a href="#" class="item-thumb"> <img src="../images/items/10.jpg"></a>
+		  <a href="#" class="item-thumb"> <img src="../images/items/7.jpg"></a>
+		  <a href="#" class="item-thumb"> <img src="../images/items/8.jpg"></a>
+		</div> <!-- thumbs-wrap.// -->
+	</article> <!-- gallery-wrap .end// -->
+			</aside>
+			<main class="col-sm-6">
+	<article class="content-body">
+		<h3 class="title">{{ product.product_name}}</h3>
+		<div class="rating-wrap mb-3">
+			<span class="badge badge-warning"> <i class="fa fa-star"></i> 3.8</span>
+			<small class="text-muted ml-2">45 reviews</small>
+		</div>
+		<p>{{ product.product_short_description | safe }}</p>
+
+	<ul class="list-check mb-4">
+		<li>Any 3 highlighted points</li>
+        <li>Any 3 highlighted points</li>
+        <li>Any 3 highlighted points</li>
+	</ul>
+
+	<div class="item-option-select d-flex flex-wrap" style="column-gap: 10px">
+		<div>
+            <h6>Model</h6>
+		<select name="" id="">
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+		</select>
+        </div>
+        <div>
+            <h6>Model</h6>
+		<select name="" id="">
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+		</select>
+        </div>
+        <div>
+            <h6>Model</h6>
+		<select name="" id="">
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+			<option value="value">Value</option>
+		</select>
+        </div>
+
+
+
+	</div>
+
+
+
+
+	<div class="row mt-3 align-items-center">
+		<div class="col">
+			<span class="price h4">Rs.{{ product.selling_price }}</span>
+            <del class="h5 text-danger">Rs.{{ product.actual_price }}</del>
+		</div> <!-- col.// -->
+		<div class="col text-right">
+			<a href="#" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="icon fas fa-shopping-cart"></i>  </a>
+			<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+			<a href="#" class="btn  btn-light"> <i class="fa fa-folder-plus"></i>  </a>
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+
+	</article>
+			</main>
+		</div>
+	</div>
+	<br><br>
+<article class="card">
+	<div class="card-body">
+		<div class="row">
+			<aside class="col-md-6">
+				<h5>Parameters</h5>
+				<dl class="row">
+				      <dt class="col-sm-3">Display</dt>
+				      <dd class="col-sm-9">13.3-inch LED-backlit display with IPS</dd>
+
+				      <dt class="col-sm-3">Processor</dt>
+				      <dd class="col-sm-9">2.3GHz dual-core Intel Core i5</dd>
+
+				      <dt class="col-sm-3">Camera</dt>
+				      <dd class="col-sm-9">720p FaceTime HD camera</dd>
+
+				      <dt class="col-sm-3">Memory</dt>
+				      <dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
+
+				      <dt class="col-sm-3">Graphics</dt>
+				      <dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
+				</dl>
+			</aside>
+			<aside class="col-md-6">
+				<h5>Features</h5>
+				<ul class="list-check">
+					<li>Best performance of battery</li>
+					<li>5 years warranty for this product</li>
+					<li>Amazing features and high quality</li>
+					<li>Best performance of battery</li>
+					<li>5 years warranty for this product</li>
+				</ul>
+			</aside>
+		</div> <!-- row.// -->
+		<hr>
+		<p>
+
+                      {{ product.product_description | safe }}
+
+
+
+		</p>
+	</div> <!-- card-body.// -->
+</article>
+
+
+
+
+</div>
+</section>
+{% endblock %}
+{% block script %}
+
+{% endblock %}
+
+

@@ -1,0 +1,22 @@
+.row-1
+{
+    display: flex;
+
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+     flex-wrap: wrap;
+}
+.row-2
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.brand-logo-class
+{   object-position: center center;
+}

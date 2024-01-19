@@ -1,7 +1,17 @@
 
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary_storage
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dfiyrqut1',
+    'API_KEY': '327587213475877',
+    'API_SECRET': '97VBYey4niCLGNgFucWURQlaxCo'
+}
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -10,7 +20,7 @@ SECRET_KEY = 'django-insecure-@w$g+_=n9fu6eg+i&#h412anuq+g!=c^t@jdje0*^jcoav03&j
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -21,6 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'store',
+    'account',
+    'cloudinary_storage',
+    'cloudinary',
+    'django_summernote',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -38,7 +54,7 @@ ROOT_URLCONF = 'waystore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +109,11 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
-
-
+STATIC_ROOT=BASE_DIR
+STATICFILES_DIRS=[
+    BASE_DIR/'static'
+]
+MEDIA_URL = '/media/'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

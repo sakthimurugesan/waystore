@@ -1,0 +1,18 @@
+User.objects.values().all()
+
+User.objects.get(email=email)
+
+User.objects.get(email=email).is_superuser
+
+User.objects.filter(id=1).exists()
+
+User.objects.values_list('email')
+
+adding gallery  done
+small descirption done
+add products
+change grid view to list view done
+make product see from brand done
+context processing for category,brand
+display category done
+display product from category done

@@ -1,0 +1,178 @@
+
+
+
+
+{% extends 'base/base.html' %}
+
+{% block title %}
+Store | Waystore
+{% endblock %}
+
+{% block content %}
+    <section class="section-content padding-y bg">
+<div class="container">
+<div class="row">
+<main class="col-md-9">
+
+
+{% for foo in product %}
+<!-- ============================ COMPONENT 1  ================================= -->
+<article class="card card-product-list">
+	<div class="card-body">
+	<div class="row">
+		<aside class="col-sm-4">
+			<a href="#" class="img-wrap"><img src="{{ foo.product_card_image.url }}"></a>
+		</aside> <!-- col.// -->
+		<div class="col-sm-8">
+				<a href="#" class="btn-link float-right"> <i class="fa fa-heart"></i></a>
+				<a href="{% url 'product_detail_displaying' foo.product_slug %}" class="title mt-2 h5">{{ foo.product_name }}</a>
+				<div class="d-flex mb-3">
+					<div class="price-wrap mr-4">
+						<span class="price h5">Rs.{{ foo.selling_price }}</span>
+                        <span class="price h6 text-danger"><s>{{ foo.actual_price }}</s></span>
+					</div> <!-- price-dewrap // -->
+
+					<div class="rating-wrap">
+						<ul class="rating-stars">
+							<li style="width:80%" class="stars-active">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</li>
+							<li>
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</li>
+						</ul>
+						<small class="label-rating text-muted">7/10</small>
+					</div> <!-- rating-wrap.// -->
+				</div>
+
+				<ul class="list-bullet">
+                    <li>Product Highlights</li><li>Product Highlights</li><li>Product Highlights</li>
+				</ul>
+
+
+				<div class="form-row">
+
+					<div class="form-group col-md">
+						<a href="{% url 'product_detail_displaying' foo.product_slug %}" class="btn btn-primary"> <span class="text">Buy Now</span> <i class="fas fa-shopping-cart"></i> </a>
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
+
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	</div> <!-- card-body .// -->
+</article>
+<!-- ============================ COMPONENT 1  END .// ================================= -->
+
+{% endfor %}
+
+
+
+
+</main> <!-- col.// -->
+<aside class="col-md-3">
+<!-- COMPONENTS SIDEBAR -->
+<output>
+<div class="card">
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_aside1">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Categories </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse" id="collapse_aside1">
+			<div class="card-body">
+				<form class="mb-3">
+				<div class="input-group">
+				  <input type="text" class="form-control" placeholder="Search">
+				  <div class="input-group-append">
+				    <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+				  </div>
+				</div>
+				</form>
+				<ul class="list-menu">
+                    {% for foo in category %}
+                    <li><a href="#">{{ foo.category_name }} </a></li>
+                    {% endfor %}
+
+
+
+				</ul>
+
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group  .// -->
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_aside2">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Price </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_aside2">
+			<div class="card-body">
+				<input type="range" class="custom-range" min="0" max="100" name="">
+				<div class="form-row">
+				<div class="form-group col-md-6">
+				  <label>Min</label>
+				  <input class="form-control" placeholder="$0" type="number">
+				</div>
+				<div class="form-group text-right col-md-6">
+				  <label>Max</label>
+				  <input class="form-control" placeholder="$1,0000" type="number">
+				</div>
+				</div> <!-- form-row.// -->
+				<button class="btn btn-block btn-primary">Apply</button>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group  .// -->
+
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_aside4">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Rating </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse" id="collapse_aside4">
+			<div class="card-body">
+			  <label class="custom-control custom-checkbox">
+			  <input type="checkbox" checked="" class="custom-control-input">
+			  <div class="custom-control-label">Best  </div>
+			</label>
+
+			<label class="custom-control custom-checkbox">
+			  <input type="checkbox" checked="" class="custom-control-input">
+			  <div class="custom-control-label">Good </div>
+			</label>
+
+			<label class="custom-control custom-checkbox">
+			  <input type="checkbox" checked="" class="custom-control-input">
+			  <div class="custom-control-label">Normal</div>
+			</label>
+
+			<label class="custom-control custom-checkbox">
+			  <input type="checkbox" checked="" class="custom-control-input">
+			  <div class="custom-control-label">Not good</div>
+			</label>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group  .// -->
+</div> <!-- card.// -->
+</output>
+<!-- COMPONENTS SIDEBAR END .// -->
+	</aside>
+</div> <!-- row.// -->
+
+
+</div> <!-- container .//  -->
+</section>
+{% endblock %}
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+
