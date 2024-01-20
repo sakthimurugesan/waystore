@@ -13,6 +13,10 @@ small descirption done
 add products
 change grid view to list view done
 make product see from brand done
-context processing for category,brand
+context processing for category,brand done
 display category done
 display product from category done
+cart counter
+add to cart
+add to wishlist
+cart displaying

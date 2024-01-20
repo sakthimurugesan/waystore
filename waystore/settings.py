@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'account.context.custom_context',
             ],
         },
     },
@@ -117,3 +118,6 @@ MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+
+AUTH_USER_MODEL = 'account.CustomUser'

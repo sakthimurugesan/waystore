@@ -55,7 +55,7 @@ Buy | {{ product.product_name }}
         <li>Any 3 highlighted points</li>
 	</ul>
 
-	<div class="item-option-select d-flex flex-wrap" style="column-gap: 10px">
+	<div class="item-option-select d-flex flex-wrap" style="column-gap: 15px">
 		<div>
             <h6>Model</h6>
 		<select name="" id="">
@@ -96,16 +96,30 @@ Buy | {{ product.product_name }}
 
 	<div class="row mt-3 align-items-center">
 		<div class="col">
-			<span class="price h4">Rs.{{ product.selling_price }}</span>
+			<span class="price h4 d-block">Rs.{{ product.selling_price }}</span>
             <del class="h5 text-danger">Rs.{{ product.actual_price }}</del>
 		</div> <!-- col.// -->
-		<div class="col text-right">
-			<a href="#" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="icon fas fa-shopping-cart"></i>  </a>
-			<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
-			<a href="#" class="btn  btn-light"> <i class="fa fa-folder-plus"></i>  </a>
-		</div> <!-- col.// -->
-	</div> <!-- row.// -->
 
+	</div> <!-- row.// -->
+<div class="row mt-3 align-items-center">
+    <div class="form-row">
+					<div class="form-group col-md flex-grow-0">
+						<div class="input-group input-spinner">
+						  <div class="input-group-prepend">
+						    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+						  </div>
+						  <input type="text" class="form-control" value="1">
+						  <div class="input-group-append">
+						    <button class="btn btn-light" type="button" id="button-minus"> − </button>
+						  </div>
+						</div>  <!-- input-spinner.// -->
+					</div> <!-- col.// -->
+					<div class="form-group col-md">
+						<a href="#" class="btn btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i> </a>
+					</div> <!-- col.// -->
+				</div>
+</div>
+        <p>Display no of items in cart</p>
 	</article>
 			</main>
 		</div>
