@@ -20,10 +20,10 @@ Buy | {{ brand_name }}
 	<div class="card-body">
 	<div class="row">
 		<aside class="col-sm-4">
-			<a href="#" class="img-wrap"><img src="{{ foo.product_card_image.url }}"></a>
+			<a href="{% url 'brand_product_detail_displaying' foo.brand_name foo.product_slug %}" class="img-wrap"><img src="{{ foo.product_card_image.url }}"></a>
 		</aside> <!-- col.// -->
 		<div class="col-sm-8">
-				<a href="#" class="btn-link float-right"> <i class="fa fa-heart"></i></a>
+
 				<a href="{% url 'brand_product_detail_displaying' foo.brand_name foo.product_slug %}" class="title mt-2 h5">{{ foo.product_name }}</a>
 				<div class="d-flex mb-3">
 					<div class="price-wrap mr-4">

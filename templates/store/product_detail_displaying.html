@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load store_tags %}
 {% load static %}
 {% block style %}
     <link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
@@ -17,12 +18,15 @@
 <link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
 
+
+
 {% endblock %}
 
 {% block title %}
 Buy | {{ product.product_name }}
 {% endblock %}
 {% block content %}
+    {% include 'base/messages.html' %}
 <section class="section-content padding-y bg">
 <div class="container">
 	<div class="card">
@@ -102,29 +106,57 @@ Buy | {{ product.product_name }}
 
 	</div> <!-- row.// -->
 <div class="row mt-3 align-items-center">
-    <div class="form-row">
-					<div class="form-group col-md flex-grow-0">
+                <form method="post" action="{% url 'addtocart' product.id %}" class="form-row">
+                    {% csrf_token %}
+{#                #}
+					{% if product|notEmpty %}
+                        <div class="form-group col-md flex-grow-0">
 						<div class="input-group input-spinner">
+
 						  <div class="input-group-prepend">
-						    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+						    <button class="btn btn-light" type="button" id="button-minus"> - </button>
 						  </div>
-						  <input type="text" class="form-control" value="1">
-						  <div class="input-group-append">
-						    <button class="btn btn-light" type="button" id="button-minus"> − </button>
+                            <label>
+                                 <input type="hidden" name="quantity" id="hidden-quantity" value="{{ product.min_quantity }}">
+                                <input type="text" id="quantity" min="{{ product.min_quantity }}" max="{{ product.max_quantity }}" class="form-control" value="{{ product.min_quantity }}">
+                            </label>
+                            <div class="input-group-append">
+						    <button class="btn btn-light" type="button" id="button-plus"> + </button>
 						  </div>
 						</div>  <!-- input-spinner.// -->
 					</div> <!-- col.// -->
-					<div class="form-group col-md">
-						<a href="#" class="btn btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i> </a>
-					</div> <!-- col.// -->
-				</div>
+					<div class="form-group col-md-0">
+                        <button type="submit" id="cartBtn" class="btn btn-primary">Add to cart <i class="fas fa-shopping-cart"></i> </button>
+					</div>
+                {% endif %}
+{#                #}
+                {% if product|isEmpty %}
+                    <div class="form-group col-md-0 h6 text-danger mt-2 ml-2"> Out of Stock  </div>
+                {% endif %}
+
+                    <div class="form-group col-md">
+                        {% if wishlist %}
+                                                  <a href="{% url 'addtowishlist' product.id %}" style="border: 1px solid red" class="btn  btn-light"> <i style="color: red" class="fas fa-heart"></i>  </a>
+
+                            {% else %}
+                            <a href="{% url 'addtowishlist' product.id %}" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+                        {% endif %}
+                    </div>
+                    <!-- col.// -->
+				</form>
 </div>
-        <p>Display no of items in cart</p>
+        {% if quantity_in_cart is not None %}
+          <p>{{ quantity_in_cart }} nos already in cart</p>
+        {% endif %}
+
 	</article>
 			</main>
 		</div>
 	</div>
 	<br><br>
+
+<h1>Description</h1>
+
 <article class="card">
 	<div class="card-body">
 		<div class="row">
@@ -176,6 +208,42 @@ Buy | {{ product.product_name }}
 </section>
 {% endblock %}
 {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the relevant elements
+    var inputElement = document.getElementById("quantity")
+    var inputHidden = document.getElementById("hidden-quantity");
+    var buttonPlus = document.getElementById('button-plus');
+    var buttonMinus = document.getElementById('button-minus');
+
+
+    // Disable the input field
+    inputElement.disabled = true;
+
+    // Add click event listener for incrementing
+    buttonPlus.addEventListener('click', function () {
+        if(inputElement.value< {{ product.max_quantity }})
+        {
+            inputElement.value = parseInt(inputElement.value, 10) + 1;
+        inputHidden.value = parseInt(inputElement.value, 10) ;
+        }
+    });
+
+    // Add click event listener for decrementing
+    buttonMinus.addEventListener('click', function () {
+      // Ensure the value doesn't go below the minimum quantity
+      if (parseInt(inputElement.value, 10) > {{ product.min_quantity }}) {
+          {
+               inputElement.value = parseInt(inputElement.value, 10) - 1;
+           inputHidden.value = parseInt(inputElement.value, 10) ;
+          }
+      }
+    });
+
+
+
+  });
+</script>
 
 {% endblock %}
 

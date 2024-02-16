@@ -1,6 +1,9 @@
 {% extends 'base/base.html' %}
 {% block content %}
 {% load static %}
+{% include 'base/messages.html' %}
+
+
 
 <!-- ========================= SECTION INTRO ========================= -->
 <section class="section-intro padding-y-sm">
@@ -66,6 +69,7 @@
 
 <header class="section-heading">
 	<h3 class="section-title">Popular products</h3>
+    <a href="#" class="btn btn-outline-primary float-right">See all</a>
 </header><!-- sect-heading -->
 
 
@@ -106,6 +110,7 @@
 
 <header class="section-heading">
 	<h3 class="section-title">New arrived</h3>
+    <a href="#" class="btn btn-outline-primary float-right">See all</a>
 </header><!-- sect-heading -->
 
 <div class="row">
@@ -207,7 +212,8 @@
 		<figure class="box item-logo">
 			<a href="#"><img src="{% static 'images/logos/logo2.png' %}"></a>
 			<figcaption class="border-top pt-2">12 Products</figcaption>
-		</figure> <!-- item-logo.// -->
+		</figure>
+        <!-- item-logo.// -->
 	</div> <!-- col.// -->
 </div> <!-- row.// -->
 </div><!-- container // -->
@@ -219,5 +225,7 @@
 {% endblock %}
 
 {% block title %}
+
+
 Waystore
 {% endblock %}

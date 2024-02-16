@@ -1,11 +1,7 @@
-
 {% extends 'base/base.html'  %}
-
-
-{% load post_tags %}
 {% load static %}
 {% block title %}
-    Cart | Waystore
+    Wishlist | Waystore
 {% endblock %}
 
 {% block style %}
@@ -35,7 +31,7 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
 <div class="container">
-	<h2 class="title-page">Shopping cart</h2>
+	<h2 class="title-page">Wishlist</h2>
 </div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
@@ -52,7 +48,6 @@
 <thead class="text-muted">
 <tr class="small text-uppercase">
   <th scope="col">Product</th>
-    <th scope="col" width="120">Quantity</th>
   <th scope="col" width="120">Price</th>
   <th scope="col" class="text-right" width="200"> </th>
 </tr>
@@ -65,25 +60,19 @@
 			<div class="aside"><img src="{{ foo.product.product_card_image.url }}" class="img-sm"></div>
 			<figcaption class="info">
 				<a href="{% url 'product_detail_displaying' foo.product.product_slug %}" class="title text-dark">{{ foo.product.product_name }}</a>
-				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+{#				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>#}
 			</figcaption>
 		</figure>
 	</td>
 
-    	<td>
+	<td>
 		<div class="price-wrap">
-		  <var class="price">{{ foo.quantity }}</var>
+			<var class="price">Rs.{{ foo.product.selling_price }}</var>
 
 		</div> <!-- price-wrap .// -->
 	</td>
-	<td>
-		<div class="price-wrap">
-		  <var class="price">Rs.{{  foo|product_total }}</var> <!-- Use the custom filter -->
-			<small class="text-muted"> Rs.{{ foo.product.selling_price }} each </small>
-		</div> <!-- price-wrap .// -->
-	</td>
 	<td class="text-right">
-	<a href="{% url 'remove_from_cart' foo.product.id %}" class="btn btn-light"> Remove</a>
+	<a href="{% url 'addtowishlist' foo.product.id %}" class="btn btn-light"> Remove</a>
 	</td>
 </tr>
 {% endfor %}
@@ -93,54 +82,15 @@
 </table>
 
 <div class="card-body border-top">
-	<a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
+
 	<a href="{% url 'store' %}" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
 </div>
 </div> <!-- card.// -->
 
-<div class="alert alert-success mt-3">
-	<p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
-</div>
+
 
 	</main> <!-- col.// -->
-	<aside class="col-md-3">
-		<div class="card mb-3">
-			<div class="card-body">
-			<form>
-				<div class="form-group">
-					<label>Have coupon?</label>
-					<div class="input-group">
-						<input type="text" class="form-control" name="" placeholder="Coupon code">
-						<span class="input-group-append">
-							<button class="btn btn-primary">Apply</button>
-						</span>
-					</div>
-				</div>
-			</form>
-			</div> <!-- card-body.// -->
-		</div>  <!-- card .// -->
-		<div class="card">
-			<div class="card-body">
-					<dl class="dlist-align">
-					  <dt>Total price:</dt>
-					  <dd class="text-right">Rs.{{ actual_total }}</dd>
-					</dl>
-					<dl class="dlist-align">
-					  <dt>Discount:</dt>
-					  <dd class="text-right">Rs.{{ discount }}</dd>
-					</dl>
-					<dl class="dlist-align">
-					  <dt>Total:</dt>
-					  <dd class="text-right  h5"><strong>Rs.{{ cart_total }}</strong></dd>
-					</dl>
-					<hr>
-					<p class="text-center mb-3">
-						<img src="images/misc/payments.png" height="26">
-					</p>
 
-			</div> <!-- card-body.// -->
-		</div>  <!-- card .// -->
-	</aside> <!-- col.// -->
 </div>
 
 </div> <!-- container .//  -->

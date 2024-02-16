@@ -18,8 +18,5 @@
     align-items: center;
 }
 .brand-logo-class
-
-{
-    object-fit: contain;
-    /*object-position: center center;*/
+{   object-position: center center;
 }

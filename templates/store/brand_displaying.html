@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{% static 'css/store/brand_displaying.css' %}">
 {% endblock %}
 {% block title %}
-Brands | Waystore
+Brands
 {% endblock %}
 {% block content %}
 <section class="section-pagetop bg">
@@ -31,15 +31,15 @@ Brands | Waystore
     <div class="row-1">
     <div class="row-2">
           {% for foo in brands %}
-<div class="col-md-2">
+<div class="col-md-3">
 		<figure class="card card-product-grid">
 			<div class="img-wrap">
-				<span class="badge badge-danger"> NEW </span>
+
 				<img class="brand-logo-class" src="{{ foo.brand_image.url }}">
-				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> View {{ brand }} Products</a>
+				<a class="btn-overlay" href="{% url 'brand_product_displaying' foo.brand_slug %}"><i class="fa fa-search-plus"></i> View Products</a>
 			</div> <!-- img-wrap.// -->
 			<figcaption class="info-wrap">
-				<div class="fix-height">
+				<div class="" >
 					<a href="{% url 'brand_product_displaying' foo.brand_slug %}" class="title text-center">{{ foo.brand_name }}</a>
 					<a href="{% url 'brand_product_displaying' foo.brand_slug %}" class="btn btn-block btn-primary mt-2">Buy Now</a>
 				</div>

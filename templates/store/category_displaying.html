@@ -16,7 +16,7 @@
 <!-- custom style -->
 <link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
-    <link rel="stylesheet" href="{% static 'css/store/brand_displaying.css' %}">
+    <link rel="stylesheet" href="{% static 'css/store/category_displaying.css' %}">
 {% endblock %}
 {% block title %}
 Categories
@@ -34,7 +34,7 @@ Categories
 <div class="col-md-3">
 		<figure class="card card-product-grid">
 			<div class="img-wrap">
-				<span class="badge badge-danger"> NEW </span>
+
 				<img class="brand-logo-class" src="{{ foo.category_image.url }}">
 				<a class="btn-overlay" href="{% url 'category_product_displaying' foo.category_slug %}"><i class="fa fa-search-plus"></i> View Products</a>
 			</div> <!-- img-wrap.// -->

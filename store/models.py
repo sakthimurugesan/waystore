@@ -49,6 +49,8 @@ class Product(models.Model):
                                                  help_text="Not more than 40 words")
     product_highlights = models.TextField(blank=True, null=True, default="Highlight three points",
                                           help_text="Highlight three points")
+    min_quantity=models.IntegerField(default=1)
+    max_quantity = models.IntegerField(default=10)
 
     recently_add = models.BooleanField(default=False)
     trending = models.BooleanField(default=False)
@@ -73,3 +75,6 @@ class Product(models.Model):
 class GalleryImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     gallery_image = models.ImageField(upload_to='gallery_image/',blank=True,null=True)
+
+
+

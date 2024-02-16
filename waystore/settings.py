@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'account',
+    'orders_cart_wishlist',
     'cloudinary_storage',
     'cloudinary',
     'django_summernote',
@@ -63,6 +64,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'account.context.custom_context',
+                'account.context.getuser',
+                'account.context.get_len_cart',
             ],
         },
     },
@@ -121,3 +124,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 AUTH_USER_MODEL = 'account.CustomUser'
+SESSION_ENGINE="django.contrib.sessions.backends.db"
+SESSION_COOKIE_SECURE=True

@@ -21,10 +21,14 @@ Store | Waystore
 	<div class="card-body">
 	<div class="row">
 		<aside class="col-sm-4">
-			<a href="#" class="img-wrap"><img src="{{ foo.product_card_image.url }}"></a>
+            {% if foo.recently_add %}
+             	<span class="badge badge-danger"> NEW </span>
+            {% endif %}
+
+			<a href="{% url 'product_detail_displaying' foo.product_slug %}" class="img-wrap"><img src="{{ foo.product_card_image.url }}"></a>
 		</aside> <!-- col.// -->
 		<div class="col-sm-8">
-				<a href="#" class="btn-link float-right"> <i class="fa fa-heart"></i></a>
+
 				<a href="{% url 'product_detail_displaying' foo.product_slug %}" class="title mt-2 h5">{{ foo.product_name }}</a>
 				<div class="d-flex mb-3">
 					<div class="price-wrap mr-4">
@@ -96,7 +100,7 @@ Store | Waystore
 				</form>
 				<ul class="list-menu">
                     {% for foo in category %}
-                    <li><a href="#">{{ foo.category_name }} </a></li>
+                    <li><a href="{% url 'category_product_displaying' foo.category_slug %}">{{ foo.category_name }} </a></li>
                     {% endfor %}
 
 
