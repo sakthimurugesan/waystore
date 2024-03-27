@@ -9,13 +9,12 @@ from waystore import settings
 
 
 def home(request):
-    request.session.save()
-    print()
     return render(request, 'index.html')
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+ path('admin/', admin.site.urls),
     path('', home, name='index'),
     path('store/', include('store.urls')),
     path('account/', include('account.urls')),

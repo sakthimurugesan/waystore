@@ -25,6 +25,7 @@ def login_page(request):
             login(request, user)
             request.session['email']=email
             request.session.save()
+
             messages.success(request, message='Login Successful')
             return redirect("index")
         else:

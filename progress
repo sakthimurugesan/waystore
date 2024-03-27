@@ -30,8 +30,10 @@ Design index thumbnail
 account page
 orders page
 add brand category page
-
 add rating
 add review
 add notify for out of stock
 user_status_in_cart
+add activation email
+add reset ,forgot password email
+add order email
