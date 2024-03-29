@@ -1,4 +1,4 @@
-GalleryImagefrom django.urls import reverse
+from django.urls import reverse
 from django.utils.html import format_html
 from django.contrib import admin
 from .models import *
@@ -16,7 +16,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin_thumbnails.thumbnail('gallery_image')
 class GalleryImageAdmin(admin.TabularInline):
-    model = 
+    model = GalleryImage
     extra = 1
     min_num = 3
     max_num = 7
